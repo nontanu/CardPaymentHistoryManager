@@ -1,5 +1,7 @@
 package jp.co.niconiconi.cardapp.model;
 
+import java.util.Optional;
+
 public class LoginUser extends User {
 
 	private String password;
@@ -9,8 +11,8 @@ public class LoginUser extends User {
 		this.password = loginUserEntity.getPassword();
 	}
 
-	public String getPassword() {
-		return password;
+	public Optional<String> getPassword() {
+		return Optional.of(password);
 	}
 
 }

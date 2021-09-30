@@ -7,11 +7,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import jp.co.niconiconi.cardapp.data.entity.LoginUser;
-import jp.co.niconiconi.cardapp.factory.LoginUserFactory;
+import jp.co.niconiconi.cardapp.factory.UserFactory;
+import jp.co.niconiconi.cardapp.model.User;
 
 public class AuthUserServiceTest {
 
-	private AuthUserService authUserService;
+	private final AuthUserService authUserService;
 
 	public AuthUserServiceTest() {
 		this.authUserService = new AuthUserService(new mockLoginUserFactory());
@@ -28,10 +29,10 @@ public class AuthUserServiceTest {
 		assertNotNull(user);
 	}
 
-	private class mockLoginUserFactory implements LoginUserFactory {
+	private class mockLoginUserFactory extends UserFactory {
 
 		@Override
-		public jp.co.niconiconi.cardapp.model.LoginUser createLoginUser(String userId) {
+		public User create(String userId) {
 			// TODO 自動生成されたメソッド・スタブ
 			return getLoginUserIfNotMatchIdReturnNull(userId, "existUserId");
 		}

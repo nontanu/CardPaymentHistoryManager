@@ -6,7 +6,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 
-import jp.co.niconiconi.cardapp.factory.LoginUserFactory;
+import jp.co.niconiconi.cardapp.factory.UserFactory;
+import jp.co.niconiconi.cardapp.model.User;
 import jp.co.niconiconi.cardapp.model.UserDetail;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -16,14 +17,14 @@ import lombok.RequiredArgsConstructor;
 public class AuthUserService implements UserDetailsService {
 
 	@NonNull
-	private final LoginUserFactory loginUserFactory;
+	private final UserFactory loginUserFactory;
 
 	@Override
 	public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
 		// 入力値が空の場合もあるため、予めチェックしておく。（DBFluteの場合、事前にチェック必須。）
 		ifUserNullThrowNotFoundException(userId);
 
-		jp.co.niconiconi.cardapp.model.LoginUser user = loginUserFactory.createLoginUser(userId);
+		User user = loginUserFactory.create(userId);
 		return new UserDetail(user);
 	}
 
@@ -33,6 +34,10 @@ public class AuthUserService implements UserDetailsService {
 			// ここでは適当に空文字を入れておく
 			throw new UsernameNotFoundException("");
 		}
+	}
+
+	public static void execute() {
+
 	}
 
 }

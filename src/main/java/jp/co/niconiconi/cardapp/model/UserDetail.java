@@ -6,8 +6,8 @@ import org.springframework.security.core.userdetails.User;
 
 public class UserDetail extends User {
 
-	public UserDetail(LoginUser loginUser) {
-		super(loginUser.getUserId(), loginUser.getPassword(), Collections.emptyList());
+	public UserDetail(jp.co.niconiconi.cardapp.model.User user) {
+		super(user.getUserId(), user.getPassword().orElse(null), Collections.emptyList());
 	}
 
 }
