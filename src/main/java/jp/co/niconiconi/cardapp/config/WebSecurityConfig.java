@@ -48,6 +48,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     void configureAuthenticationManager(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(authUserService)
-            .passwordEncoder(passwordEncoder());
+                .passwordEncoder(passwordEncoder());
     }
 }

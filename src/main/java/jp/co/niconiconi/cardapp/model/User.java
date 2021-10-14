@@ -1,5 +1,6 @@
 package jp.co.niconiconi.cardapp.model;
 
+import java.util.List;
 import java.util.Optional;
 
 public abstract class User {
@@ -26,4 +27,6 @@ public abstract class User {
 	}
 
 	abstract Optional<String> getPassword();
+
+	abstract List<Card> getCardList();
 }

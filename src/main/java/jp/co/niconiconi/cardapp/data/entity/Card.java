@@ -7,10 +7,11 @@ import lombok.Data;
 
 @Entity
 @Data
-public class LoginUser {
+public class Card {
     @Id
-    private Integer id;
+    private String id;
     private String userId;
-    private String password;
     private String name;
+    private String company;
+    private String brand;
 }

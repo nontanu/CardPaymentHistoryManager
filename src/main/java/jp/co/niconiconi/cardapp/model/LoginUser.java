@@ -1,18 +1,27 @@
 package jp.co.niconiconi.cardapp.model;
 
+import java.util.List;
 import java.util.Optional;
 
 public class LoginUser extends User {
 
-	private String password;
+    private String password;
 
-	public LoginUser(jp.co.niconiconi.cardapp.data.entity.LoginUser loginUserEntity) {
-		super(loginUserEntity.getId(), loginUserEntity.getUserId(), loginUserEntity.getName());
-		this.password = loginUserEntity.getPassword();
-	}
+    private List<Card> cardLIst;
 
-	public Optional<String> getPassword() {
-		return Optional.of(password);
-	}
+    public LoginUser(Integer id, String userId, String name, String password, List<Card> cardList) {
+        super(id, userId, name);
+        this.password = password;
+        this.cardLIst = cardList;
+    }
+
+    public Optional<String> getPassword() {
+        return Optional.of(password);
+    }
+
+    @Override
+    public List<Card> getCardList() {
+        return cardLIst;
+    }
 
 }
