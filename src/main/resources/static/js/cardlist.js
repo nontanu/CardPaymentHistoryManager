@@ -14,7 +14,7 @@ $(function() {
           $('<li></li>').append(
             $('<a></a>')
               .attr({
-                href: location.href + '/' + val.id,
+                href: $('#root_url').val() + '/' + val.id,
                 target: '_blank'
               })
               .text(val.name)
@@ -34,7 +34,7 @@ $(function() {
           $('<li></li>').append(
             $('<a></a>')
               .attr({
-                href: location.href + '/cardregist',
+                href: $('#root_url').val() + 'cardregist',
                 target: '_blank'
               })
               .text("カードを登録する")

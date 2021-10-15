@@ -36,8 +36,4 @@ public class AuthUserService implements UserDetailsService {
         }
     }
 
-    public static void execute() {
-
-    }
-
 }

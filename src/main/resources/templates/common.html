@@ -12,10 +12,10 @@
     <th:block th:replace="${scripts} ?: _" />
 </head>
 <body>
-    <!-- body内で共通化したい部品をfragment化する
+    <!-- body内で共通化したい部品をfragment化する -->
     <header th:fragment="header">
-        <h1><a th:href="@{'/'}">sample app</a></h1>
+        <input type="hidden" id="root_url" th:value="@{'/'}" />
     </header>
-    -->
+
 </body>
 </html>
