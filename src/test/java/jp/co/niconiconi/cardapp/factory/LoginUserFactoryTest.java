@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import jp.co.niconiconi.cardapp.Interactor.CardInteractor;
 import jp.co.niconiconi.cardapp.data.entity.Card;
 import jp.co.niconiconi.cardapp.data.entity.LoginUser;
 import jp.co.niconiconi.cardapp.data.repository.CardRepository;
@@ -26,7 +27,8 @@ public class LoginUserFactoryTest {
     private final HttpSession session = new MockHttpSession();
 
     public LoginUserFactoryTest() {
-        this.loginUserFactoryImpl = new LoginUserFactory(new MockLoginUserRepository(), new MockCardRepository(),
+        this.loginUserFactoryImpl = new LoginUserFactory(new MockLoginUserRepository(), new MockCardInteractor(),
+                new MockCardRepository(),
                 session);
     }
 
@@ -186,6 +188,15 @@ public class LoginUserFactoryTest {
         public List<Card> findByUserId(int userId) {
             List<Card> cardList = new ArrayList<>();
             return cardList;
+        }
+
+    }
+
+    private class MockCardInteractor implements CardInteractor {
+
+        @Override
+        public jp.co.niconiconi.cardapp.model.Card registerCard(String name, String company, String brand, int userId) {
+            return new jp.co.niconiconi.cardapp.model.Card("aabbbcccddddd", 1, "test", "testCompany", "testBrand");
         }
 
     }

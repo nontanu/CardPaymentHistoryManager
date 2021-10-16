@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
  */
 @RequiredArgsConstructor
 @Component
-public class LoginUserInteractor implements UserInteractor{
+public class LoginUserInteractor implements UserInteractor {
 
     @NonNull
     private final LoginUserRepository loginUserRepository;
@@ -25,7 +25,7 @@ public class LoginUserInteractor implements UserInteractor{
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    public void save(String userId, String password) {
+    public void registerLoginUser(String userId, String password) {
         LoginUser loginUser = newLoginUser(userId, password);
         loginUserRepository.save(loginUser);
     }

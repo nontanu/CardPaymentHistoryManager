@@ -10,7 +10,7 @@ import lombok.Data;
 public class Card {
     @Id
     private String id;
-    private String userId;
+    private int userId;
     private String name;
     private String company;
     private String brand;

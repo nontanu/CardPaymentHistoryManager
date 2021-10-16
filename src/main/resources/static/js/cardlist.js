@@ -1,20 +1,18 @@
 $(function() {
-    // .phpファイルへのアクセス
     $.ajax(
       {
         type: 'get',
-        url: location.href + '/list',
+        url: $('#root_url').val() + 'card/list',
         dataType: 'json'
       }
     )
-    // 検索成功時にはページに結果を反映
     .done(function(res) {
       $.each(res, function(index, val) {
         $('#card_list').append(
           $('<li></li>').append(
             $('<a></a>')
               .attr({
-                href: $('#root_url').val() + '/' + val.id,
+                href: $('#root_url').val() + val.id,
                 target: '_blank'
               })
               .text(val.name)
@@ -34,7 +32,7 @@ $(function() {
           $('<li></li>').append(
             $('<a></a>')
               .attr({
-                href: $('#root_url').val() + 'cardregist',
+                href: $('#root_url').val() + 'card/registration',
                 target: '_blank'
               })
               .text("カードを登録する")

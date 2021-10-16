@@ -8,12 +8,13 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserRegistForm {
+public class CardRegistrationForm {
+    @Size(min = 1, max = 32)
+    private String name;
     @NotBlank
-    @Size(min = 1, max = 127)
-    private String userName;
-
+    @Size(min = 1, max = 64)
+    private String company;
     @NotBlank
-    @Size(min = 1, max = 127)
-    private String password;
+    @Size(min = 1, max = 12)
+    private String brand;
 }

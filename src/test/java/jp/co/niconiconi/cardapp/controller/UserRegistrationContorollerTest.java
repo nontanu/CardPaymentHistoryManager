@@ -16,29 +16,30 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 
 import jp.co.niconiconi.cardapp.Interactor.UserInteractor;
-import jp.co.niconiconi.cardapp.form.UserRegistForm;
-import jp.co.niconiconi.cardapp.service.UserRegistService;
+import jp.co.niconiconi.cardapp.constants.ReturnUrls;
+import jp.co.niconiconi.cardapp.form.UserRegistrationForm;
+import jp.co.niconiconi.cardapp.service.UserRegistrationService;
 
-public class UserRegistContorollerTest {
-    private static final String PAGE_USER_REGIST = "userregist/index";
-    private static final String PAGE_LOGIN = "login/Login";
-    private final UserRegistContoroller userRegistContoroller;
+public class UserRegistrationContorollerTest {
 
-    public UserRegistContorollerTest() {
-        this.userRegistContoroller = new UserRegistContoroller(new UserRegistService(new MockUserInteractor()));
+    private final UserRegistrationContoroller userRegistContoroller;
+
+    public UserRegistrationContorollerTest() {
+        this.userRegistContoroller = new UserRegistrationContoroller(
+                new UserRegistrationService(new MockUserInteractor()));
     }
 
     @Test
     public void testIndexReturnStr() {
-        assertEquals(PAGE_USER_REGIST, userRegistContoroller.index());
+        assertEquals(ReturnUrls.PAGE_USER_REGIST.getUrl(), userRegistContoroller.index());
     }
 
     @Test
-    public void testRegistOK() {
+    public void testRegist() {
         BindingResult result = new MockResult();
         Model model = new MockModel();
-        UserRegistForm form = new UserRegistForm();
-        assertEquals(PAGE_LOGIN, userRegistContoroller.regist(form, result, model));
+        UserRegistrationForm form = new UserRegistrationForm();
+        assertEquals(ReturnUrls.REDIRECT_LOGIN.getUrl(), userRegistContoroller.regist(form, result, model));
     }
 
     private class MockResult implements BindingResult {
@@ -322,8 +323,7 @@ public class UserRegistContorollerTest {
     private class MockUserInteractor implements UserInteractor {
 
         @Override
-        public void save(String userId, String password) {
+        public void registerLoginUser(String userId, String password) {
         }
-
     }
 }

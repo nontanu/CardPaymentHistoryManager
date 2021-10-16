@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import jp.co.niconiconi.cardapp.constants.ReturnUrls;
 import jp.co.niconiconi.cardapp.model.Card;
 import jp.co.niconiconi.cardapp.service.CardListService;
 import lombok.NonNull;
@@ -21,17 +22,15 @@ import lombok.RequiredArgsConstructor;
 @Controller
 public class CardListContoroller {
 
-    private static final String PAGE_CARD_LIST = "cardlist/index";
-
     @NonNull
     private final CardListService cardListService;
 
-    @RequestMapping("/cardlist")
+    @RequestMapping("/card")
     public String index() {
-        return PAGE_CARD_LIST;
+        return ReturnUrls.PAGE_CARD_LIST.getUrl();
     }
 
-    @RequestMapping("/cardlist/list")
+    @RequestMapping("/card/list")
     @ResponseBody
     public List<Card> list() {
         return cardListService.getCardList();

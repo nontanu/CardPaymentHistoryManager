@@ -29,12 +29,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .loginProcessingUrl("/authenticate")
             .usernameParameter("userName")
             .passwordParameter("password")
-            .defaultSuccessUrl("/cardlist")
+            .defaultSuccessUrl("/card")
             .permitAll();
 
         http.csrf().disable().authorizeRequests()
-        .antMatchers("/userregist").permitAll()
-        .antMatchers("/userregist/regist").permitAll()
+        .antMatchers("/user/registration").permitAll()
+        .antMatchers("/user/registration/new").permitAll()
         .anyRequest().authenticated();
 
     }

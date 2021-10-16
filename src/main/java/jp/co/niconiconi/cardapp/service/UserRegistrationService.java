@@ -13,11 +13,11 @@ import lombok.RequiredArgsConstructor;
  */
 @RequiredArgsConstructor
 @Service
-public class UserRegistService {
+public class UserRegistrationService {
     @NonNull
     private final UserInteractor loginUserInteractor;
 
-    public void registLoginUser(String id, String password) {
-        loginUserInteractor.save(id, password);
+    public void registerLoginUser(String id, String password) {
+        loginUserInteractor.registerLoginUser(id, password);
     }
 }

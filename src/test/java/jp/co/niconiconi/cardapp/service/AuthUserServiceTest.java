@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import jp.co.niconiconi.cardapp.Interactor.CardInteractor;
 import jp.co.niconiconi.cardapp.data.entity.LoginUser;
 import jp.co.niconiconi.cardapp.factory.UserFactory;
 import jp.co.niconiconi.cardapp.model.Card;
@@ -57,7 +58,16 @@ public class AuthUserServiceTest {
 			user.setName("test");
 			List<Card> cardList = new ArrayList<>();
 			return new jp.co.niconiconi.cardapp.model.LoginUser(user.getId(), user.getUserId(), user.getName(),
-					user.getPassword(), cardList);
+					user.getPassword(), cardList, new MockCardInteractor());
+		}
+
+		private class MockCardInteractor implements CardInteractor {
+
+            @Override
+            public Card registerCard(String name, String company, String brand, int userId) {
+                return new Card("aabbbcccddddd", 1, "test", "testCompany", "testBrand");
+            }
+
 		}
 
 	}

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
+import jp.co.niconiconi.cardapp.Interactor.CardInteractor;
 import jp.co.niconiconi.cardapp.constants.SessionNames;
 import jp.co.niconiconi.cardapp.data.repository.CardRepository;
 import jp.co.niconiconi.cardapp.data.repository.LoginUserRepository;
@@ -28,6 +29,9 @@ public class LoginUserFactory extends UserFactory {
 
     @NonNull
     private final LoginUserRepository loginUserRepository;
+
+    @NonNull
+    private final CardInteractor cardInteractor;
 
     @NonNull
     private final CardRepository cardRepository;
@@ -57,7 +61,8 @@ public class LoginUserFactory extends UserFactory {
                                         loginUserEntity.getUserId(),
                                         loginUserEntity.getName(),
                                         loginUserEntity.getPassword(),
-                                        getCardListById(loginUserEntity.getId())
+                                        getCardListById(loginUserEntity.getId()),
+                                        cardInteractor
                                     );
         return loginUser;
     }

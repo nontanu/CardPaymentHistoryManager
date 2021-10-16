@@ -4,19 +4,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import jp.co.niconiconi.cardapp.constants.ReturnUrls;
+
 public class LoginControllerTest {
 
-	private final LoginController loginController;
+    private final LoginController loginController;
 
-	private static final String PAGE_LOGIN = "login/Login";
+    public LoginControllerTest() {
+        this.loginController = new LoginController();
+    }
 
-	public LoginControllerTest() {
-		this.loginController = new LoginController();
-	}
-
-	@Test
-	public void testLogin() {
-		assertEquals(PAGE_LOGIN, loginController.login(null));
-	}
+    @Test
+    public void testLogin() {
+        assertEquals(ReturnUrls.PAGE_LOGIN.getUrl(), loginController.login(null));
+    }
 
 }

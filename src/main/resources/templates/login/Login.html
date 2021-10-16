@@ -2,8 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>ログイン</title>
+	<title>ログイン</title>
 </head>
 <body>
 	<form th:action="@{/authenticate}" method="POST">
@@ -12,7 +11,7 @@
 		<p>パスワード</p>
 		<input id="password" name="password" type="password" />
 		<input name="Button_login" type="submit" value="ログイン" />
-		<a th:href="@{/userregist}">新規登録</a>
+		<a th:href="@{/user/registration}">新規登録</a>
 	</form>
 </body>
 </html>

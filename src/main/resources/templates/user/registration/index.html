@@ -2,11 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>ログイン</title>
+	<title>ユーザー登録</title>
 </head>
 <body>
-	<form th:action="@{/userregist/regist}" method="POST">
+	<form th:action="@{/user/registration/new}" method="POST">
 		<p>ログインネーム</p>
 		<input id="user" name="userName" type="text" />
 		<p>パスワード</p>

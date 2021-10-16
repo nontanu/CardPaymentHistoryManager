@@ -16,8 +16,8 @@ public class LoginUserInteractorTest {
     }
 
     @Test
-    public void testSave() {
-        loginUserInteractor.save("test", "test");
+    public void testRegisterLoginUser() {
+        loginUserInteractor.registerLoginUser("test", "testPassword");
     }
 
     private class MockLoginUserRepository implements LoginUserRepository {

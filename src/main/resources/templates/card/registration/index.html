@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>カード登録</title>
+</head>
+<body>
+	<form th:action="@{/card/registration/new}" method="POST">
+		<p>カード名</p>
+		<input id="name" name="name" type="text" />
+		<p>カード会社</p>
+		<input id="company" name="company" type="text" />
+		<p>ブランド</p>
+		<input id="brand" name="brand" type="text" />
+		<input name="Button_login" type="submit" value="登録" />
+	</form>
+</body>
+</html>

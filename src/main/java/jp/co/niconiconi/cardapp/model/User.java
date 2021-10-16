@@ -29,4 +29,6 @@ public abstract class User {
 	abstract Optional<String> getPassword();
 
 	abstract List<Card> getCardList();
+
+	abstract void registCard(String cardName, String cardCompany, String cardBrand);
 }
