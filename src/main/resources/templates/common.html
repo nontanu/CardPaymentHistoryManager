@@ -1,0 +1,21 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="meta_header(title, scripts)">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- CSSは後回し -->
+    <!-- <link rel="stylesheet" href="/css/common.css" /> -->
+    <script type="text/javascript" th:src="@{/js/jquery-3.6.0.min.js}"></script>
+    <!-- タイトルのフォーマット -->
+    <title th:text="${title}" ></title>
+
+    <!-- 各View固有で読み込むもの
+    <th:block th:replace="${links} ?: _" /> -->
+    <th:block th:replace="${scripts} ?: _" />
+</head>
+<body>
+    <!-- body内で共通化したい部品をfragment化する -->
+    <header th:fragment="header">
+        <input type="hidden" id="root_url" th:value="@{'/'}" />
+    </header>
+
+</body>
+</html>

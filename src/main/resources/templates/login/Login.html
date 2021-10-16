@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>ログイン</title>
+</head>
+<body>
+	<form th:action="@{/authenticate}" method="POST">
+		<p>ログインネーム</p>
+		<input id="user" name="userName" type="text" />
+		<p>パスワード</p>
+		<input id="password" name="password" type="password" />
+		<input name="Button_login" type="submit" value="ログイン" />
+		<a th:href="@{/user/registration}">新規登録</a>
+	</form>
+</body>
+</html>
