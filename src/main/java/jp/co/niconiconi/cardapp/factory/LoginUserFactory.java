@@ -1,7 +1,6 @@
 package jp.co.niconiconi.cardapp.factory;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +14,7 @@ import jp.co.niconiconi.cardapp.data.repository.LoginUserRepository;
 import jp.co.niconiconi.cardapp.model.Card;
 import jp.co.niconiconi.cardapp.model.LoginUser;
 import jp.co.niconiconi.cardapp.model.User;
+import jp.co.niconiconi.cardapp.util.Lists;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
@@ -57,13 +57,12 @@ public class LoginUserFactory extends UserFactory {
     private User newLoginUser(String userId) {
         jp.co.niconiconi.cardapp.data.entity.LoginUser loginUserEntity = getLoginUserEntity(userId);
         LoginUser loginUser = new LoginUser(
-                                        loginUserEntity.getId(),
-                                        loginUserEntity.getUserId(),
-                                        loginUserEntity.getName(),
-                                        loginUserEntity.getPassword(),
-                                        getCardListById(loginUserEntity.getId()),
-                                        cardInteractor
-                                    );
+                loginUserEntity.getId(),
+                loginUserEntity.getUserId(),
+                loginUserEntity.getName(),
+                loginUserEntity.getPassword(),
+                getCardListById(loginUserEntity.getId()),
+                cardInteractor);
         return loginUser;
     }
 
@@ -87,10 +86,8 @@ public class LoginUserFactory extends UserFactory {
     private List<Card> getCardListById(int id) {
         List<jp.co.niconiconi.cardapp.data.entity.Card> cardEntityList = getCardEntityList(id);
         // エンティティをモデルに変換する
-        List<Card> cardList =
-                cardEntityList.stream()
-                              .map(s -> new Card(s.getId(), s.getUserId(), s.getName(), s.getCompany(), s.getBrand()))
-                              .collect(Collectors.toList());
+        List<Card> cardList = Lists.convertInternalObject(cardEntityList,
+                s -> new Card(s.getId(), s.getUserId(), s.getName(), s.getCompany(), s.getBrand()));
         return cardList;
     }
 

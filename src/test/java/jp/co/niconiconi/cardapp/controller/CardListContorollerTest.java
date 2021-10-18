@@ -11,8 +11,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpSession;
 
 import jp.co.niconiconi.cardapp.constants.ReturnUrls;
-import jp.co.niconiconi.cardapp.model.Card;
 import jp.co.niconiconi.cardapp.service.CardListService;
+import jp.co.niconiconi.cardapp.view.Card;
 
 public class CardListContorollerTest {
 
