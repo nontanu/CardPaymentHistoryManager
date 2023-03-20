@@ -4,8 +4,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
+import jp.co.niconiconi.cardapp.Interactor.CardInteractor;
 import jp.co.niconiconi.cardapp.constants.SessionNames;
-import jp.co.niconiconi.cardapp.model.LoginUser;
+import jp.co.niconiconi.cardapp.domain.model.LoginUser;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
@@ -20,6 +21,9 @@ public class CardRegistrationService {
     @NonNull
     private final HttpSession session;
 
+    @NonNull
+    private final CardInteractor cardInteractor;
+
     /**
      * カードを登録する.
      * @param name
@@ -29,7 +33,9 @@ public class CardRegistrationService {
     public void registerCard(final String name, final String company, final String brand) {
         LoginUser loginUser = (LoginUser) session.getAttribute(SessionNames.LOGIN_USER.getName());
         if (loginUser != null) {
-            loginUser.registCard(name, company, brand);
+            Integer id = loginUser.getId();
+            var card = cardInteractor.newCard(name, id, company, brand);
+            cardInteractor.registerCard(card);
         }
     }
 }

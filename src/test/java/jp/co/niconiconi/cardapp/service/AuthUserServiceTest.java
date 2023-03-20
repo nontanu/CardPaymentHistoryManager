@@ -9,11 +9,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import jp.co.niconiconi.cardapp.Interactor.CardInteractor;
 import jp.co.niconiconi.cardapp.data.entity.LoginUser;
+import jp.co.niconiconi.cardapp.domain.model.Card;
+import jp.co.niconiconi.cardapp.domain.model.User;
 import jp.co.niconiconi.cardapp.factory.UserFactory;
-import jp.co.niconiconi.cardapp.model.Card;
-import jp.co.niconiconi.cardapp.model.User;
 
 public class AuthUserServiceTest {
 
@@ -42,7 +41,7 @@ public class AuthUserServiceTest {
 			return getLoginUserIfNotMatchIdReturnNull(userId, "existUserId");
 		}
 
-		private jp.co.niconiconi.cardapp.model.LoginUser getLoginUserIfNotMatchIdReturnNull(String id, String expect) {
+		private jp.co.niconiconi.cardapp.domain.model.LoginUser getLoginUserIfNotMatchIdReturnNull(String id, String expect) {
 			if (expect.equals(id)) {
 				return newUser(id);
 			} else {
@@ -50,24 +49,15 @@ public class AuthUserServiceTest {
 			}
 		}
 
-		private jp.co.niconiconi.cardapp.model.LoginUser newUser(String userId) {
+		private jp.co.niconiconi.cardapp.domain.model.LoginUser newUser(String userId) {
 			LoginUser user = new LoginUser();
 			user.setId(1);
 			user.setUserId(userId);
 			user.setPassword("test");
 			user.setName("test");
 			List<Card> cardList = new ArrayList<>();
-			return new jp.co.niconiconi.cardapp.model.LoginUser(user.getId(), user.getUserId(), user.getName(),
-					user.getPassword(), cardList, new MockCardInteractor());
-		}
-
-		private class MockCardInteractor implements CardInteractor {
-
-            @Override
-            public Card registerCard(String name, String company, String brand, int userId) {
-                return new Card("aabbbcccddddd", 1, "test", "testCompany", "testBrand");
-            }
-
+			return new jp.co.niconiconi.cardapp.domain.model.LoginUser(user.getId(), user.getUserId(), user.getName(),
+					user.getPassword(), cardList);
 		}
 
 	}

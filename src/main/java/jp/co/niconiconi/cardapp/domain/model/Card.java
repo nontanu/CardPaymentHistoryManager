@@ -1,4 +1,4 @@
-package jp.co.niconiconi.cardapp.model;
+package jp.co.niconiconi.cardapp.domain.model;
 
 public class Card {
 	private String id;

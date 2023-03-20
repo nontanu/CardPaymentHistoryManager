@@ -6,9 +6,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
+import jp.co.niconiconi.cardapp.domain.model.User;
+import jp.co.niconiconi.cardapp.domain.model.UserDetail;
 import jp.co.niconiconi.cardapp.factory.UserFactory;
-import jp.co.niconiconi.cardapp.model.User;
-import jp.co.niconiconi.cardapp.model.UserDetail;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 

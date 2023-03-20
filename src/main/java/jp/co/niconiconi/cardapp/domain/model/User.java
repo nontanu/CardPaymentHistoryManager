@@ -1,4 +1,4 @@
-package jp.co.niconiconi.cardapp.model;
+package jp.co.niconiconi.cardapp.domain.model;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,5 +30,5 @@ public abstract class User {
 
 	abstract List<Card> getCardList();
 
-	abstract void registCard(String cardName, String cardCompany, String cardBrand);
+	abstract void registCard(Card card);
 }

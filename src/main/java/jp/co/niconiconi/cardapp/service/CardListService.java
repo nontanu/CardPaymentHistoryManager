@@ -8,8 +8,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
 
 import jp.co.niconiconi.cardapp.constants.SessionNames;
-import jp.co.niconiconi.cardapp.model.Card;
-import jp.co.niconiconi.cardapp.model.LoginUser;
+import jp.co.niconiconi.cardapp.domain.model.Card;
+import jp.co.niconiconi.cardapp.domain.model.LoginUser;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 

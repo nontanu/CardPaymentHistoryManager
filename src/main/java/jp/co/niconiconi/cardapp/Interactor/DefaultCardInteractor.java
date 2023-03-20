@@ -21,11 +21,8 @@ public class DefaultCardInteractor implements CardInteractor {
     private final CardRepository cardRepository;
 
     @Override
-    public jp.co.niconiconi.cardapp.model.Card registerCard(String name, String company, String brand,
-            int userId) {
-        Card card = newCard(name, userId, company, brand);
+    public void registerCard(Card card) {
         cardRepository.save(card);
-        return newCardModel(card, userId);
     }
 
     /**
@@ -35,7 +32,7 @@ public class DefaultCardInteractor implements CardInteractor {
      * @param brand
      * @return Card(エンティティ)
      */
-    private Card newCard(String name, int userId, String company, String brand) {
+    public Card newCard(String name, int userId, String company, String brand) {
         Card card = new Card();
         card.setId(UUID.randomUUID().toString());
         card.setUserId(userId);
@@ -51,8 +48,8 @@ public class DefaultCardInteractor implements CardInteractor {
      * @param userId
      * @return Card(モデル)
      */
-    private jp.co.niconiconi.cardapp.model.Card newCardModel(Card card, int userId) {
-        jp.co.niconiconi.cardapp.model.Card cardModel = new jp.co.niconiconi.cardapp.model.Card(card.getId(), userId,
+    public jp.co.niconiconi.cardapp.domain.model.Card newCardModel(Card card, int userId) {
+        jp.co.niconiconi.cardapp.domain.model.Card cardModel = new jp.co.niconiconi.cardapp.domain.model.Card(card.getId(), userId,
                 card.getName(), card.getCompany(), card.getBrand());
         return cardModel;
     }

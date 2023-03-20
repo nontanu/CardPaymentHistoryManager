@@ -3,9 +3,11 @@ package jp.co.niconiconi.cardapp.controller;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.beans.PropertyEditor;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.PropertyEditorRegistry;
@@ -16,7 +18,10 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 
+import jp.co.niconiconi.cardapp.Interactor.CardInteractor;
 import jp.co.niconiconi.cardapp.constants.ReturnUrls;
+import jp.co.niconiconi.cardapp.data.entity.Card;
+import jp.co.niconiconi.cardapp.data.repository.CardRepository;
 import jp.co.niconiconi.cardapp.form.CardRegistrationForm;
 import jp.co.niconiconi.cardapp.service.CardRegistrationService;
 
@@ -25,7 +30,7 @@ public class CardRegistrationControllerTest {
     private final CardRegistrationController cardRegistController;
 
     public CardRegistrationControllerTest() {
-        this.cardRegistController = new CardRegistrationController(new CardRegistrationService(new MockHttpSession()));
+        this.cardRegistController = new CardRegistrationController(new CardRegistrationService(new MockHttpSession(), new MockCardInteractor()));
     }
 
     @Test
@@ -260,6 +265,100 @@ public class CardRegistrationControllerTest {
         @Override
         public Map<String, Object> asMap() {
             return null;
+        }
+
+    }
+
+    private class MockCardRepository implements CardRepository {
+
+        @Override
+        public <S extends Card> S save(S entity) {
+            // TODO 自動生成されたメソッド・スタブ
+            return null;
+        }
+
+        @Override
+        public <S extends Card> Iterable<S> saveAll(Iterable<S> entities) {
+            // TODO 自動生成されたメソッド・スタブ
+            return null;
+        }
+
+        @Override
+        public Optional<Card> findById(String id) {
+            // TODO 自動生成されたメソッド・スタブ
+            return null;
+        }
+
+        @Override
+        public boolean existsById(String id) {
+            // TODO 自動生成されたメソッド・スタブ
+            return false;
+        }
+
+        @Override
+        public Iterable<Card> findAll() {
+            // TODO 自動生成されたメソッド・スタブ
+            return null;
+        }
+
+        @Override
+        public Iterable<Card> findAllById(Iterable<String> ids) {
+            // TODO 自動生成されたメソッド・スタブ
+            return null;
+        }
+
+        @Override
+        public long count() {
+            // TODO 自動生成されたメソッド・スタブ
+            return 0;
+        }
+
+        @Override
+        public void deleteById(String id) {
+            // TODO 自動生成されたメソッド・スタブ
+
+        }
+
+        @Override
+        public void delete(Card entity) {
+            // TODO 自動生成されたメソッド・スタブ
+
+        }
+
+        @Override
+        public void deleteAll(Iterable<? extends Card> entities) {
+            // TODO 自動生成されたメソッド・スタブ
+
+        }
+
+        @Override
+        public void deleteAll() {
+            // TODO 自動生成されたメソッド・スタブ
+
+        }
+
+        @Override
+        public List<Card> findByUserId(int userId) {
+            List<Card> cardList = new ArrayList<>();
+            return cardList;
+        }
+
+    }
+
+    private class MockCardInteractor implements CardInteractor {
+
+        @Override
+        public void registerCard(Card card) {
+        }
+
+        @Override
+        public Card newCard(String name, int userId, String company, String brand) {
+            return null;
+        }
+
+        @Override
+        public jp.co.niconiconi.cardapp.domain.model.Card newCardModel(Card card, int userId) {
+            return new jp.co.niconiconi.cardapp.domain.model.Card("aabbbcccddddd", 1, "test", "testCompany", "testBrand");
         }
 
     }

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.mock.web.MockHttpSession;
 
-import jp.co.niconiconi.cardapp.model.Card;
+import jp.co.niconiconi.cardapp.domain.model.Card;
 
 public class CardListServiceTest {
 

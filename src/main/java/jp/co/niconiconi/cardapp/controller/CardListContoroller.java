@@ -34,7 +34,7 @@ public class CardListContoroller {
     @RequestMapping("/card/list")
     @ResponseBody
     public List<Card> list() {
-        List<jp.co.niconiconi.cardapp.model.Card> cardModelList = cardListService.getCardList();
+        List<jp.co.niconiconi.cardapp.domain.model.Card> cardModelList = cardListService.getCardList();
         return cardModelListToCardViewList(cardModelList);
     }
 
@@ -43,12 +43,12 @@ public class CardListContoroller {
      * @param cardModelList
      * @return cardViewList
      */
-    private List<Card> cardModelListToCardViewList(List<jp.co.niconiconi.cardapp.model.Card> cardModelList) {
+    private List<Card> cardModelListToCardViewList(List<jp.co.niconiconi.cardapp.domain.model.Card> cardModelList) {
         List<Card> cardViewList = Lists.convertInternalObject(cardModelList, this::newCardView);
         return cardViewList;
     }
 
-    private Card newCardView(jp.co.niconiconi.cardapp.model.Card cardModel) {
+    private Card newCardView(jp.co.niconiconi.cardapp.domain.model.Card cardModel) {
         return new Card(cardModel.getId(), cardModel.getName());
     }
 }

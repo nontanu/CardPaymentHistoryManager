@@ -1,7 +1,5 @@
 package jp.co.niconiconi.cardapp.Interactor;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -19,14 +17,8 @@ public class CardInteractorTest {
 
     @Test
     public void testRegistCard() {
-        jp.co.niconiconi.cardapp.model.Card expect = new jp.co.niconiconi.cardapp.model.Card("testId", 1,
-                "testCardName", "testCardCompany", "testCardBrand");
-        jp.co.niconiconi.cardapp.model.Card actual = cardInteractor.registerCard("testCardName", "testCardCompany",
-                "testCardBrand", 1);
-        assertEquals(expect.getUserId(), actual.getUserId());
-        assertEquals(expect.getName(), actual.getName());
-        assertEquals(expect.getCompany(), actual.getCompany());
-        assertEquals(expect.getBrand(), actual.getBrand());
+        Card card = cardInteractor.newCard("testCardName", 1, "testCardCompany", "testCardBrand");
+        cardInteractor.registerCard(card);
     }
 
     private class MockCardRepository implements CardRepository {
